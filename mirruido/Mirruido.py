@@ -6,16 +6,19 @@ from sklearn.preprocessing import MinMaxScaler
 
 
 class Mirruido:
-  def __init__(self, ruta_audio=None, top_db=30, confianza=.95):
+  def __init__(self, ruta_audio=None, top_db=30, top_db_fin=0, confianza=.95):
      self.ruta_audio = ruta_audio
      self.top_db = top_db
+     self.top_db_fin = top_db_fin
      self.confianza = confianza
      self.audio_procesado = None
 
   def procesarAudio(self):
     audio, tasa = sf.read(self.ruta_audio)
+    audio = audio[:,0]
+    print(len(audio))
     area_bajo_curva = 0
-    while area_bajo_curva < self.confianza:
+    while area_bajo_curva < self.confianza and area_bajo_curva >= self.top_db_fin:
       print(area_bajo_curva)
       print(self.top_db)
       self.audio_procesado = np.zeros(audio.shape)
