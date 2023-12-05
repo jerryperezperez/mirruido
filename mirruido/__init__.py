@@ -5,6 +5,7 @@ import soundfile as sf
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 
+from .Mirruido import Mirruido
 
 #TODO Crear una clase para el objeto audio y para poder almacenar audio_procesado y 
 # ofrecer metodos para retornar audio_procesado completo y sin segmentos de silencio
